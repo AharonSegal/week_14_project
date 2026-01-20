@@ -37,11 +37,11 @@ git checkout -b dev/server-a
 git add .
 
 # Commit changes
-git commit -m "Descriptive commit message"
+git commit -m "basic connection"
 
 # Push branch to remote
 git push -u origin title/branch_purpose
-git push -u origin aharon/server-b
+git push -u origin dev/server-a
 
 # Switch between branches
 git checkout main
