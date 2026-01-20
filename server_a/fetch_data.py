@@ -79,11 +79,16 @@ def ingest_weather_for_locations(locations):
     return records
 
 
+
+# ---------------------------------------------------
+# local file testing 
+# ---------------------------------------------------
+
 # iterate over the following location
 
-locations = ["Tel Aviv", "Gaza", "Teheran", "Beirut", "Damascus"]
+# locations = ["Tel Aviv", "Gaza", "Teheran", "Beirut", "Damascus"]
 
-data = ingest_weather_for_locations(locations)
+# data = ingest_weather_for_locations(locations)
 
 # data[:1]
 

@@ -37,7 +37,13 @@ def health_check():
 
 """
 input example:
-    ["Tel Aviv", "Gaza", "Teheran", "Beirut", "Damascus"]
+    [
+  { "country": "Tel Aviv" },
+  { "country": "Gaza" },
+  { "country": "Teheran" },
+  { "country": "Beirut" },
+  { "country": "Damascus" }
+]
 
 output: list of timestamp per hour: this is one hour -> per country
     {
@@ -57,20 +63,29 @@ output: list of timestamp per hour: this is one hour -> per country
     summary="get data for each country in the list -> send to server_b to formatted",
 )
 def post_country_data(location_list: List[single_counrty]):
-    rew_data = ingest_weather_for_locations(location_list)
-    
-    # Send to Service B the raw_data
-    try:
-        resp = requests.post(SERVICE_B_URL, json=rew_data, timeout=5)
-        resp.raise_for_status()
-        server_b_result = resp.json()
-    except Exception as exc:
-        server_b_result = {"error": str(exc)}
 
-    #TODO decide what to return
-    return {"field" : "stuff",
-            "server_b_result": server_b_result,
-            }
+    # Extract plain strings 
+    locations = [item.country for item in location_list]
+
+    raw_data = ingest_weather_for_locations(locations)
+    
+    logger.info("Fetched %d records", len(raw_data))
+    # for now, just return the raw data (later: send to Service B)
+    return raw_data
+
+    #TODO: COMMENTED OUT FOR CONNECTING TO SERVER_B
+    # # Send to Service B the raw_data
+    # try:
+    #     resp = requests.post(SERVICE_B_URL, json=raw_data, timeout=5)
+    #     resp.raise_for_status()
+    #     server_b_result = resp.json()
+    # except Exception as exc:
+    #     server_b_result = {"error": str(exc)}
+
+    # #TODO decide what to return
+    # return {"field" : "stuff",
+    #         "server_b_result": server_b_result,
+    #         }
 
 
 

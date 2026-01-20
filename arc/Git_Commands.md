@@ -19,7 +19,7 @@ git push -u origin main
 # ╚══════════════════════════════════════════════════════╝
 """
 git add .                    
-git commit -m " "      
+git commit -m "server_a basic"      
 git push                     
 
 # ╔══════════════════════════════════════════════════════╗
@@ -31,7 +31,7 @@ git branch
 
 # Create a new branch
 git checkout -b title/branch_purpose
-git checkout -b aharon/server-b
+git checkout -b dev/server-a
 
 # Stage changes
 git add .
