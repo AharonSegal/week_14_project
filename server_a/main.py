@@ -16,16 +16,15 @@ logger = logging.getLogger("server-b")
 # ---------------------------------------------------
 
 app = FastAPI(
-    title="SERVER-B",
+    title="SERVER-A",
     version="1.0.0",
 )
 
 # startup log
 @app.on_event("startup")
 def startup_event():
-    logger.info("SERVER-B starting up")
+    logger.info("SERVER-A starting up")
 
 
 app.include_router(endpoints)
-
 

@@ -85,8 +85,8 @@ locations = ["Tel Aviv", "Gaza", "Teheran", "Beirut", "Damascus"]
 
 data = ingest_weather_for_locations(locations)
 
-data[:1]
+# data[:1]
 
-for da in data:
-    print("*********************************8")
-    print(da)
+# for da in data:
+#     print("*********************************8")
+#     print(da)
