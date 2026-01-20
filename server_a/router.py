@@ -64,11 +64,13 @@ output: list of timestamp per hour: this is one hour -> per country
 )
 def post_country_data(location_list: List[single_counrty]):
 
+    # log input pydantic obj 
+    logger.info(location_list)
     # Extract plain strings 
     locations = [item.country for item in location_list]
 
     raw_data = ingest_weather_for_locations(locations)
-    
+
     logger.info("Fetched %d records", len(raw_data))
     # for now, just return the raw data (later: send to Service B)
     return raw_data

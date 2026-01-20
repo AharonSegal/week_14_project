@@ -1,5 +1,13 @@
 import requests
 from datetime import datetime
+import logging
+
+# ---------------------------------------------------
+# Logger init
+# ---------------------------------------------------
+
+logger = logging.getLogger("fetch_data")
+
 
 # --------- Helper: Geocoding ----------
 def fetch_coordinates(location_name: str):
@@ -47,6 +55,9 @@ def ingest_weather_for_locations(locations):
     records = []
 
     for location_name in locations:
+
+        logger.debug("Getting data for '%s'", location_name)
+
         # 1. Get coordinates
         location = fetch_coordinates(location_name)
 
